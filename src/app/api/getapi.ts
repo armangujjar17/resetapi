@@ -1,6 +1,4 @@
 export class Getapi {
+    Id:number;
 }
-export class Getid
-{
-    id:number;
-}
+

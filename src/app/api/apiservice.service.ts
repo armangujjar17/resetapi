@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Getapi} from './getapi';
 
 @Injectable({
@@ -8,12 +8,19 @@ import { Getapi} from './getapi';
 export class ApiserviceService {
 
   constructor(private http: HttpClient) { }
-  httpOptions={responseType:'Text' as 'JSON'}
+  
   baseUrl: string = 'http://localhost:8080/customer';
   getUsers() {
     return this.http.get<Getapi>(this.baseUrl);
   }
-  getUserById(id: number) {
-    return this.http.get<Getapi>(this.baseUrl + id);
+  getUserById(Id) {
+    return this.http.get<Getapi>(this.baseUrl +'/'+ Id);
+  }
+  deleteUserById(Id)
+  {
+  let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+  return this.http.delete<Getapi>(this.baseUrl, Id);
   }
 }
+//JSON.stringify(data)

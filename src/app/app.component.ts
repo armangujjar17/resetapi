@@ -9,7 +9,7 @@ import{ApiserviceService} from './api/apiservice.service';
 })
 export class AppComponent {
   title = 'CrudTest';
-   id;
+  Id=8;
   constructor( private ApiService : ApiserviceService) { }
   getUser(){
     this.ApiService.getUsers()
@@ -21,7 +21,15 @@ export class AppComponent {
   }
   getById()
   {
-    this.ApiService.getUserById(this.id).subscribe(data =>
+    this.ApiService.getUserById(this.Id).subscribe(data =>
+      {
+        console.log(data);
+      })
+  }
+  deleteById()
+  {
+    this.ApiService.deleteUserById(this.Id)
+    .subscribe(data =>
       {
         console.log(data);
       })
